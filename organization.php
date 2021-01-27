@@ -10,7 +10,8 @@
     <?php include_once('components/navigation.php')?>
     <?php include_once('components/navbar.php')?>
     <div class="container-fluid"><br>
-        <a href="organizationRegister.php" class="btn btn-primary">Register</a>
+        <a href="organizationRegister.php" class="btn btn-primary">Register Charity</a>
+        <a href="barangayRegister.php" class="btn btn-primary">Register Barangay</a>
         <table id="dataTable" class="table table-striped table-bordered" style="width:100%">
             <h2 id="donor">Organization</h2>
             <thead class="thead-dark">
