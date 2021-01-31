@@ -7,7 +7,7 @@
         <a href="donorDetails.php" class="list-group-item list-group-item-action bg-light">Donor</a>
         <a href="organization.php" class="list-group-item list-group-item-action bg-light">Organization</a>
         <a href="donations.php" class="list-group-item list-group-item-action bg-light">Donations</a>
-        <a href="#" class="list-group-item list-group-item-action bg-light">Log out</a>
+        <a href="logout.php" class="list-group-item list-group-item-action bg-light">Log out</a>
       </div>
     </div>
     <!-- /#sidebar-wrapper -->

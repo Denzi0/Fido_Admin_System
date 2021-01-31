@@ -11,8 +11,31 @@
 <body>
     <?php include_once('components/navigation.php');?>
     <?php include_once('components/navbar.php');?>
+
+    <?php 
+    
+        require_once('databaseConn.php');
+        session_start();
+        
+        if(isset($_POST['orgname']) && $_POST['orgincharge'] && $_POST['orgcontact'] && $_POST['orgaddress']
+        && $_POST['orgemail'] && $_POST['orgtinNo']){
+            $sql = "INSERT INTO orgdetails (orgName, orgPersonInCharge,orgContact,orgAddress,orgEmail,orgTinNumber)
+             VALUES(:orgname , :orgincharge , :orgcontact, :orgaddress,:orgemail ,:orgtinNo)";
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute(array(
+            ':orgname' => $_POST['orgname'],
+            ':orgincharge' => $_POST['orgincharge'],
+            ':orgcontact' => $_POST['orgcontact'],
+            ':orgaddress' => $_POST['orgaddress'],
+            ':orgemail' => $_POST['orgemail'],
+            ':orgtinNo' => $_POST['orgtinNo'] )); 
+            $_SESSION['success'] = 'Record Added';
+        }
+        
+        
+    ?>
     <div class="container-fluid">
-        <form id="form" action="" class="form-group needs-validation" novalidate style="margin-top:50px;">
+        <form id="form" method="POST" class="form-group needs-validation" novalidate style="margin-top:50px;">
             <div class="row justify-content-center">
                 <div class="col-md-6">
                     <div class="form-group">
@@ -42,10 +65,10 @@
                         <input type="text" name="orgaddress" id="orgaddress" class="form-control" required>
                         <div class="invalid-feedback">Please input Value</div>
                     </div>
-                    <label for="orgbarangay">Barangay</label>
+                    <!-- <label for="orgbarangay">Barangay</label>
                     <select id="orgbarangay" class="custom-select form-control">
                         <option selected>Select Barangay</option>
-                        <option>Barangay Agusan</option>
+                        <option value="Barangay Agusan">Barangay Agusan</option>
                         <option>Barangay Balubal</option>
                         <option>Barangay Baikingon</option>
                         <option>Barangay Balulang</option>
@@ -82,7 +105,7 @@
                         <option>Barangay Tignapaloan</option>
                         <option>Barangay Tuburan</option>
                         <option>Barangay Tumpagon</option>
-                    </select>
+                    </select> -->
                     <div class="form-group">
                         <label for="orgemail">Email</label>
                         <input type="email" name="orgemail" id="orgemail" class="form-control" required>
@@ -91,18 +114,16 @@
 
                     <div class="form-group">
                         <label for="orgtinNo">TIN No.</label>
-                        <input placeholder="XXX-XXX-XXX-XXX" type="text" pattern="^[0-9]*$" minlength="9" name="orgtinNo"
-                            id="orgtinNo" class="form-control" required>
+                        <input placeholder="XXX-XXX-XXX-XXX" type="text" pattern="^[0-9]*$" minlength="9"
+                            id="orgtinNo" class="form-control" name="orgtinNo" required>
                         <div class="invalid-feedback">Invalid TIN No. Must have 9 numbers</div>
                     </div>
 
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <label for="exampleFormControlFile1">Upload File</label>
                         <input type="file" class="form-control-file" id="exampleFormControlFile1" required>
-                    </div>
-                    <div style="margin-top:20px">
-                        <button class="btn btn-primary" id="btnSumbmit" type="submit">Add User</button>
-                    </div>
+                    </div> -->
+                    <input class="btn btn-primary" type="submit" name="submit" value="Add User">
                 </div>
         </form>
     </div>
