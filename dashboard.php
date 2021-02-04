@@ -6,20 +6,24 @@
     ?>
     <title>Dashboard</title>
 </head>
-<body>
+<body >
       <?php include_once('components/navigation.php')?>
       <?php include_once('components/navbar.php')?>
     
-
-
     <!-- Login STATE -->
       <?php 
+        require_once("databaseConn.php");
         session_start();
         if(isset($_SESSION['username'])){
             $message = '<p class="text-success">Login Success , Welcome - ' .$_SESSION['username'] . '</p>'; 
         }else { 
-            header('location:index.php');
+            header('Location: index.php');
         }
+        // Dashboard count the Registered Organization
+        $sql = "SELECT * FROM orgdetails";
+        $stmt = $pdo->query($sql);
+        $orgCount = $stmt->rowCount();
+        //
       ?>
       
       <div class="container-fluid">
@@ -28,11 +32,11 @@
             <div class="row">
             <div class="col-md-4">
                 <div class="card text-center">
-                    <div class="card-header bg-primary text-white">
+                    <div class="card-header bg-secondary text-white">
                         <h2>Donor</h2>
                     </div>
                     <div class="card-body">
-                        <h3 class="card-title">5</h3>
+                        <h3 class="card-title">0</h3>
                     </div>
                 </div>
             </div>
@@ -42,7 +46,7 @@
                         <h2>Organization</h2>
                     </div>
                     <div class="card-body">
-                        <h3 class="card-title">10</h3>
+                        <h3 class="card-title"><?= $orgCount ?></h3>
                     </div>
                 </div>
             </div>
@@ -52,7 +56,7 @@
                         <h2>Donations</h2>
                     </div>
                     <div class="card-body">
-                        <h3 class="card-title">49</h3>
+                        <h3 class="card-title">0</h3>
                     </div>
                 </div>
             </div>

@@ -16,4 +16,11 @@
         $(document).ready(function () {
             $('#dataTable').DataTable();
         });
+         // pagelength edit to support 5 row count
+
+        var table = $('#dataTable').DataTable({
+            pageLength : 5,
+            lengthMenu: [[5, 10, 20, 25], [5, 10, 20, 25]]
+        })
+       ////////////////////////////////////
 </script>
