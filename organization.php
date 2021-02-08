@@ -13,12 +13,13 @@
     <!-- model -->
     <?php 
         require_once("databaseConn.php");
-        $stmt = $pdo->query("SELECT orgID,orgName,orgPersonInCharge,orgContact,orgAddress,
-        orgEmail,orgTinNumber,orgPassword FROM orgdetails");
+        $stmt = $pdo->query("SELECT * FROM orgdetails");
+        //  $stmt = $pdo->query("SELECT orgID,orgName,orgPersonInCharge,orgContact,orgAddress,
+        // orgEmail,orgTinNumber,orgPassword FROM orgdetails");
     ?>
     <!-- //VIew -->
     
-    <div class="container"><br>
+    <div class="container-fluid"><br>
         <a href="organizationRegister.php" class="btn btn-primary"><i class="fas fa-plus-circle"></i>
         Add User</a>
         <!-- <a href="barangayRegister.php" class="btn btn-primary">Register Barangay</a> -->
@@ -35,7 +36,7 @@
         <h2 id="donor">Organization</h2>
 
         <div class="table-responsive"> <!--table Responsive make the table have scroll on bottom -->
-            <table id="dataTable" class="table table-striped table-bordered " style="width:100%">
+            <table id="dataTable" class="table table-striped table-bordered" style="width:100%">
             
                 <thead class="thead-dark">
                     <tr>
@@ -72,9 +73,9 @@
                     echo ("</td><td>");
                     echo (htmlentities($row['orgPassword']));
                     echo ("</td><td>");
-                    echo ('<a class="btn btn-primary" href="edit.php?orgID=' .$row['orgID'] . '">EDIT</a>');
-                     echo ("</td><td>");
-                    echo ('<a class="btn btn-danger" href="delete.php?orgID='  .$row['orgID'] . '">DELETE</a> ');
+                    echo ('<a class="btn btn-primary" href="editOrg.php?orgID=' .$row['orgID'] . '">EDIT</a>');
+                    echo ("</td><td>");
+                    echo ('<a class="btn btn-danger" href="deleteOrg.php?orgID='  .$row['orgID'] . '">DELETE</a> ');
                     echo ('</td></tr>');
                 }
                 ?>

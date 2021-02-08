@@ -39,45 +39,88 @@
         }
 
     ?>
-    <div class="container vh-100" >
+
+    <div class="container vh-100">
         <div class="d-flex justify-content-center align-items-md-center h-100">
-            <!-- <div class="bg-primary" style="height:395px;width:40%">
-                <img src="assets/images/login.jpg" alt="">
-            </div> -->
-            <div class="card my-auto shadow row" style="width:30% ;background-color:#323c48;">
-                <div class="card-header text-center ">
-                    <h2 class="text-white">FIDO</h2>
-                    <small class="text-white">Login</small>
+            <div class="card my-auto shadow row p-3">
+                <div class="card-header text-center">
+                    <img src="assets/images/appname.svg" style="height:60px;width:60px"><br>
                 </div>
                 <div class="card-body">
                     <?php 
-                            if(isset($message)){
-                                echo '<label class="text-danger">'.$message. '</label>';
-                            }
-                        ?>
-                    <form method="POST" id="form" autocomplete="off">
+                        if(isset($message)){
+                            echo '<label class="text-danger">'.$message. '</label>';
+                        }
+                    ?>
+                    <form action="" method="POST" id="form" >
                         <div class="form-group">
-                            <label for="username" class="text-white">Username</label>
-
+                            <label for="username" class="text-dark">Username</label>
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text "><i class="fa fa-user"></i></span>
                                 </div>                           
-                                 <input type="text" name="username" id="username" class="form-control">
-                                 
+                                 <input type="text" name="username" id="username" class="form-control">      
                             </div>
-                           
                         </div>
                         <div class="form-group">
-                            <label for="password" class="text-white">Password</label>
-
+                            <label for="password" class="text-dark">Password</label>
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text "><i class="fas fa-lock"></i></span>
                                 </div>
                                 <input type="password" name="password" id="password" class="form-control">
-                               
+                            </div>
+                        </div>
+                        <input type="submit" class="btn btn-primary w-100 text-white" value="Login" name="submit">
+                    </form>
+                </div>
+                <div class="card-footer text-right">
+                    <small class="text-dark">&copy; FIDO</small>
+                </div>
+            </div>
+        </div>
 
+    </div>
+
+
+
+
+
+
+
+
+    
+    <!-- <div class="container vh-100" >
+        <div class="d-flex justify-content-center align-items-md-center h-100">
+           
+            <div class="card my-auto shadow row">
+                <div class="card-header text-center ">
+                    <h2 class="text-dark">FIDO</h2>
+                    <small class="text-dark">Login</small>
+                </div>
+                <div class="card-body"> -->
+                    
+                            <!-- if(isset($message)){
+                                echo '<label class="text-danger">'.$message. '</label>';
+                            } -->
+                    
+                    <!-- <form method="POST" id="form" autocomplete="off">
+                        <div class="form-group">
+                            <label for="username" class="text-dark">Username</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text "><i class="fa fa-user"></i></span>
+                                </div>                           
+                                 <input type="text" name="username" id="username" class="form-control">      
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="password" class="text-dark">Password</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text "><i class="fas fa-lock"></i></span>
+                                </div>
+                                <input type="password" name="password" id="password" class="form-control">
                             </div>
                         </div>
                         <input type="submit" class="btn btn-secondary w-100 text-white mt-2 p-2 rounded-pill" value="Login" name="submit">
@@ -92,7 +135,7 @@
         </div>
     </div>
 
-    </div>
+     -->
 
 </body>
 

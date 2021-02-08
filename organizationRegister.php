@@ -40,7 +40,7 @@
     ?>
     <div class="container-fluid">
         
-        <form id="form"  method="POST" class="form-group needs-validation mt-3" novalidate
+        <form id="form" autocomplete="off" method="POST" class="form-group needs-validation mt-3" novalidate
         oninput='orgconfirmpass.setCustomValidity(orgconfirmpass.value != orgpassword.value ? "Passwords do not match." : "")'>
             <div class="row justify-content-center">
                 <div class="col-md-6">

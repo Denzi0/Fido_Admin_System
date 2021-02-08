@@ -4,7 +4,7 @@
     <?php 
         include_once('components\header.php');
     ?>
-    <title>Delete</title>
+    <title>Delete Donor</title>
 </head>
 <body>
     <?php include_once('components\navigation.php');?>
@@ -13,23 +13,23 @@
     require_once('databaseConn.php');
     session_start();
     if(isset($_POST['delete'])){
-        $sql = "DELETE FROM orgDetails WHERE orgID = :zip";
+        $sql = "DELETE FROM donordetails WHERE donorID = :zip";
         $stmt = $pdo->prepare($sql);
         $stmt->execute(array(
-            ':zip' => $_POST['orgID'],
+            ':zip' => $_POST['donorID'],
         ));
-        $_SESSION['success'] = "Record Deleted";
-        header("Location:organization.php");
+        $_SESSION['successdonor'] = "Record Deleted";
+        header("Location: donorDetails.php");
         return;
     }
-    $stmt = $pdo->prepare("SELECT * FROM orgDetails WHERE orgID = :xyz");
+    $stmt = $pdo->prepare("SELECT * FROM donordetails WHERE donorID = :xyz");
     $stmt->execute(array(
-        ':xyz' => $_GET['orgID']
+        ':xyz' => $_GET['donorID']
     ));
     $row = $stmt->fetch(PDO::FETCH_ASSOC);
     if($row === false){
-        $_SESSION['error'] = 'Bad value';
-        header("Location:organization.php");
+        $_SESSION['errordonor'] = 'Bad value';
+        header("Location: donorDetails.php");
         return;
     }
 
@@ -40,16 +40,16 @@
    <div class="d-flex flex-row justify-content-center">
         <div class="card w-10">
            <div class="card-header">
-                <p class="card-title">Confirm to Delete ? <span class="font-italic"><?= htmlentities($row['orgName'])?></span> </p>
+                <p class="card-title">Confirm to Delete Donor ? <span class="font-bold"><?= htmlentities($row['donorFname'])?></span> </p>
            </div>
             <div class="card-body">
-            
+        
                 <form action="" method="post">
-                    <input type="hidden" name='orgID' value="<?= $row['orgID'] ?>" ><br>
+                    <input type="hidden" name='donorID' value="<?= $row['donorID'] ?>" ><br>
 
                     <div class="d-flex justify-content-between">
                         <input type="submit" value="Delete" name="delete" class="btn btn-danger">
-                        <a href="organization.php" class="btn btn-primary">Cancel</a>
+                        <a href="donorDetails.php" class="btn btn-primary">Cancel</a>
                     </div>
                 </form>
             </div>

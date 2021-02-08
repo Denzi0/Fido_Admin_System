@@ -20,60 +20,89 @@
             header('Location: index.php');
         }
         // Dashboard count the Registered Organization
-        $sql = "SELECT * FROM orgdetails";
-        $stmt = $pdo->query($sql);
-        $orgCount = $stmt->rowCount();
+        $stmtDonor = $pdo->query("SELECT * FROM donordetails");
+        $stmtOrg = $pdo->query("SELECT * FROM orgdetails");
+        $donorCount = $stmtDonor->rowCount();
+        $orgCount = $stmtOrg->rowCount();
         //
       ?>
       
-      <div class="container-fluid">
+    <div class="container-fluid">
         <?php echo $message ?>
         <div class="cards" style="margin-top:20px;">
             <div class="row">
-            <div class="col-md-4">
-                <div class="card text-center">
-                    <div class="card-header bg-secondary text-white">
-                        <h2>Donor</h2>
-                    </div>
-                    <div class="card-body">
-                        <h3 class="card-title">0</h3>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card text-center">
-                    <div class="card-header bg-warning text-white">
-                        <h2>Organization</h2>
-                    </div>
-                    <div class="card-body">
-                        <h3 class="card-title"><?= $orgCount ?></h3>
+                <div class="col-md-4">
+                    <div class="card text-center">
+                        <div class="card-header bg-secondary text-white">
+                            <h2>Donor</h2>
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title"><?= $donorCount?></h3>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card text-center">
-                    <div class="card-header bg-success text-white">
-                        <h2>Donations</h2>
+                <div class="col-md-4">
+                    <div class="card text-center">
+                        <div class="card-header bg-warning text-white">
+                            <h2>Organization</h2>
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title"><?= $orgCount ?></h3>
+                        </div>
                     </div>
-                    <div class="card-body">
-                        <h3 class="card-title">0</h3>
+                </div>
+                <div class="col-md-4">
+                    <div class="card text-center">
+                        <div class="card-header bg-success text-white">
+                            <h2>Donations</h2>
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">0</h3>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-   
-      </div>
-    </div>
-    <!-- /#page-content-wrapper -->
+    <canvas class="mt-5" id="myChart" width="400" height="150"></canvas>
 
-  </div>
+    <!-- /#page-content-wrapper -->
     <?php include_once('components/myscript.php'); ?>
     <script>
     
       $(document).ready(function () {
             $('#dataTableDonor').DataTable();
         });
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+        datasets: [{
+            label: '# of Votes',
+            data: [12, 19, 3, 5, 2, 3],
+            backgroundColor: [
+                '#ec4646',
+                '#03506f',
+                '#f2a154',
+                '#1687a7',
+                '#ffe227',
+                '#00af91'
+            ],
+            
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+});
     </script>
 </body>
 
